@@ -1,0 +1,53 @@
+seed: 7
+work_dir: runs/default
+
+data:
+  sequences_root: data/sequences
+  graph_dir: data/graphs
+  window_dir: data/windows
+  image_ext: jpg
+  depth_ext: png
+  fps: 5.0
+  max_depth_m: 6.0
+  min_depth_m: 0.2
+  detections_subdir: detections
+  rgb_subdir: rgb
+  depth_subdir: depth
+  pose_subdir: poses
+  intrinsics_file: intrinsics.txt
+
+extract:
+  detector: ultralytics
+  detector_model: yolov8n.pt
+  conf: 0.35
+  iou: 0.5
+  classes: []
+  max_det: 64
+  track_max_missed: 10
+  match_3d_weight: 1.0
+  match_iou_weight: 0.35
+  match_label_penalty: 4.0
+  match_threshold: 2.0
+  near_thresh_m: 1.2
+  front_thresh_m: 0.35
+  center_crop: 0.6
+
+windows:
+  history: 6
+  horizon: 1
+  max_nodes: 24
+
+train:
+  epochs: 40
+  batch_size: 16
+  lr: 0.001
+  weight_decay: 0.0001
+  num_workers: 0
+  hidden_dim: 128
+  dropout: 0.1
+  use_camera_motion: true
+  grad_clip: 1.0
+  val_ratio: 0.2
+  edge_loss_weight: 0.2
+  vis_loss_weight: 0.7
+  presence_loss_weight: 0.3

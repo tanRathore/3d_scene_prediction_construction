@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Forecasting results across prediction horizons. The learned model is most beneficial at longer horizons, while copy-last remains very strong for one-step prediction in this mostly static indoor scene.}
+\small
+\begin{tabular}{llcccc}
+\toprule
+Horizon & Method & L2 $\downarrow$ & Vis F1 $\uparrow$ & Edge F1 $\uparrow$ & Present Acc $\uparrow$ \\
+\midrule
+H1 & Learned & 0.062 & 0.893 & 0.652 & 0.991 \\
+H1 & Copy-last & 0.047 & 0.718 & 0.644 & 0.991 \\
+H1 & Const-vel & 0.077 & 0.718 & 0.648 & 0.991 \\
+H3 & Learned & 0.111 & 0.772 & 0.737 & 0.965 \\
+H3 & Copy-last & 0.127 & 0.679 & 0.737 & 0.962 \\
+H3 & Const-vel & 0.159 & 0.679 & 0.705 & 0.962 \\
+H5 & Learned & 0.203 & 0.733 & 0.690 & 0.947 \\
+H5 & Copy-last & 0.296 & 0.562 & 0.666 & 0.937 \\
+H5 & Const-vel & 0.363 & 0.562 & 0.650 & 0.937 \\
+\bottomrule
+\end{tabular}
+\end{table}

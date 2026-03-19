@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Ablations on representation and forecasting design choices. Hybrid detect+seg gives the best H1 representation tradeoff, while explicit camera-motion conditioning does not improve H5 performance in this limited single-sequence setting.}
+\small
+\begin{tabular}{llcccc}
+\toprule
+Group & Variant & Horizon & L2 $\downarrow$ & Vis F1 $\uparrow$ & Edge F1 $\uparrow$ \\
+\midrule
+Representation & Pure segmask & H1 & 0.062 & 0.830 & 0.833 \\
+Representation & Hybrid detect+seg & H1 & 0.062 & 0.893 & 0.652 \\
+Forecasting & Hybrid + camera motion & H5 & 0.203 & 0.733 & 0.690 \\
+Forecasting & Hybrid no camera motion & H5 & 0.204 & 0.778 & 0.704 \\
+\bottomrule
+\end{tabular}
+\end{table}

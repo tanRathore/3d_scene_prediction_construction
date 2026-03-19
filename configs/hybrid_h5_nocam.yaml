@@ -1,0 +1,101 @@
+seed: 7
+work_dir: runs/real_v8_h5_nocam
+data:
+  sequences_root: data/sequences
+  graph_dir: data/graphs_hybrid_mask
+  window_dir: data/windows
+  image_ext: jpg
+  depth_ext: png
+  fps: 5.0
+  max_depth_m: 6.0
+  min_depth_m: 0.2
+  detections_subdir: detections_hybrid_mask
+  rgb_subdir: rgb
+  depth_subdir: depth
+  pose_subdir: poses
+  intrinsics_file: intrinsics.txt
+extract:
+  detector: hybrid_ultralytics
+  detector_model: yolov8s.pt
+  conf: 0.18
+  iou: 0.5
+  classes: []
+  max_det: 96
+  track_max_missed: 14
+  match_3d_weight: 1.0
+  match_iou_weight: 0.35
+  match_label_penalty: 4.0
+  match_threshold: 2.6
+  near_thresh_m: 1.5
+  front_thresh_m: 0.35
+  center_crop: 1.0
+  use_masks: true
+  fallback_to_box: true
+  seg_model: yolov8s-seg.pt
+  seg_conf: 0.12
+  seg_iou_match: 0.35
+windows:
+  history: 6
+  horizon: 5
+  max_nodes: 24
+train:
+  epochs: 55
+  batch_size: 16
+  lr: 0.0005
+  weight_decay: 0.0001
+  num_workers: 0
+  hidden_dim: 192
+  dropout: 0.1
+  use_camera_motion: false
+  grad_clip: 1.0
+  val_ratio: 0.2
+  edge_loss_weight: 0.25
+  vis_loss_weight: 0.7
+  presence_loss_weight: 0.3
+  size_loss_weight: 0.2
+render:
+  width: 1280
+  height: 720
+  point_stride: 10
+  point_frames: 8
+  voxel: 0.04
+  point_size: 2.0
+  zoom: 0.62
+  front:
+  - 0.25
+  - -0.35
+  - -0.9
+  up:
+  - 0.0
+  - -1.0
+  - 0.0
+  background:
+  - 0.03
+  - 0.03
+  - 0.04
+  axis_size: 0.3
+  history_color:
+  - 0.2
+  - 0.62
+  - 1.0
+  pred_color:
+  - 1.0
+  - 0.48
+  - 0.12
+  true_color:
+  - 0.2
+  - 0.88
+  - 0.42
+  edge_history_color:
+  - 0.72
+  - 0.82
+  - 1.0
+  edge_pred_color:
+  - 1.0
+  - 0.72
+  - 0.42
+  edge_true_color:
+  - 0.6
+  - 1.0
+  - 0.72
+  fps: 8
